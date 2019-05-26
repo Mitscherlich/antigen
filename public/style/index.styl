@@ -1,0 +1,34 @@
+:root
+  box-sizing border-box
+
+*
+  box-sizing inherit
+
+
+.loading
+  background-image url("~/assets/images/loading.gif")
+  background-position center
+  background-repeat no-repeat
+
+.iconfont
+  user-select none
+
+@import "./dragbox.styl"
+
+#qrcode
+  min-height 360px
+  img
+    width 100%
+
+#result
+  img
+    width 36px
+    height 36px
+  tr td
+    vertical-align middle
+  .success
+    background-color rgba(40, 167, 69, 0.3)
+  .loading
+    height 36px
+    background-color #fff
+    background-size 196px

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+docs/
+logs/
+*.log
+.git
+.cache
+.DS_Store
+._*

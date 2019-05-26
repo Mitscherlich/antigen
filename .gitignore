@@ -1,0 +1,12 @@
+node_modules/
+dist/
+logs/
+*.log
+*.out
+.DS_Store
+.cache
+._*
+/opencv/
+/protobuf/
+/models/
+ngrok.yml

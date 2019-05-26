@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    environment:
+      - HOST=0.0.0.0
+      - DEBUG=antigen:*
+      - DB_URL=mongo
+  mongo:
+    image: mongo
+    restart: always

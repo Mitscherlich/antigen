@@ -1,0 +1,36 @@
+#dragbox
+  position relative
+  min-height 25rem
+  [type='file'], .thumbnail
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+  [type="file"]
+    cursor pointer
+    width 100%
+    opacity 0
+  .thumbnail
+    position absolute
+    min-height 25rem
+    border 1px dashed #ddd
+    border-radius .25rem
+    text-align center
+    transition all ease-in-out .1s
+     ^[0].dropped .thumbnail
+      border 1px solid #ccc
+      img
+        max-width 100%
+        height 100%
+    ^[0].hover .thumbnail
+      border 1px solid #28a745
+      .iconfont
+        color #28a745
+    .iconfont
+      color #ddd
+      font-size 10rem
+      line-height 25rem
+      transition all ease-in-out .1s
+      ^[0]:hover .thumbnail .iconfont
+        font-size 12rem

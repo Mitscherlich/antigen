@@ -1,0 +1,111 @@
+<html lang="zn-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <title>人脸识别 DEMO</title>
+    <link rel="stylesheet" href="./style/index.styl" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="container mt-5">
+        <header class="mb-3">
+          <h3>人脸识别 DEMO</h3>
+        </header>
+        <main class="mb-3">
+          <div class="row">
+            <div class="col-md mb-3">
+              <p class="text-dark">选择图片：</p>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="粘贴图片 URL" disabled />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" disabled>上传</button>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  拖动图片至此
+                </div>
+                <div class="card-body">
+                  <div id="dragbox">
+                    <div class="thumbnail">
+                      <i class="iconfont icon-upload"></i>
+                    </div>
+                    <input type="file" accept=".jpg, .jpeg, .png" />
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      aria-valuenow="0"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style="width: 0"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md mb-3">
+              <div class="row mb-3">
+                <div class="col">
+                  <p class="text-dark">原始图像：</p>
+                  <canvas id="input" style="border: 1px solid" width="140" height="140"></canvas>
+                </div>
+                <div class="col">
+                  <p class="text-dark">检测结果：</p>
+                  <canvas id="output" style="border: 1px solid" width="140" height="140"></canvas>
+                </div>
+              </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" width="10%">#</th>
+                    <th scope="col" width="20%">人脸图像</th>
+                    <th scope="col" width="auto">用户名</th>
+                    <th scope="col" width="15%">相似度</th>
+                  </tr>
+                </thead>
+                <tbody id="result">
+                  <td class="loading" colspan="4"></td>
+                </tbody>
+              </table>
+              <button id="btnRefresh" class="btn btn-lg btn-success">刷新</button>
+            </div>
+          </div>
+        </main>
+        <footer class="mb-5">
+          <button
+            id="btnModal"
+            class="btn btn-lg btn-primary mr-2"
+            data-toggle="modal"
+            data-target="#modalACS"
+          >
+            显示二维码
+          </button>
+          <button id="btnClear" class="btn btn-lg btn-danger mr-2">清除</button>
+        </footer>
+      </div>
+    </div>
+    <div class="modal fade" id="modalACS" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">门禁二维码</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body loading" id="qrcode"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              关闭
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
