@@ -11,7 +11,8 @@ import consola from 'consola';
 const r = (path: string) => resolve(__dirname, path);
 const MIDDLEWARE = ['database', 'router', 'ws'];
 const bundler = new Bundler(r('./public/index.html'), {
-  outDir: r('./public/dist')
+  outDir: r('./public/dist'),
+  publicUrl: process.env.BASE_URL || '/'
 });
 const app = new Koa();
 

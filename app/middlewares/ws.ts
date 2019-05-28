@@ -4,13 +4,14 @@ import SokcetIO, { Socket } from 'socket.io';
 import createDebugger from 'debug';
 
 const debug = createDebugger('antigen:ws');
-
-const path = process.env.BASE_URL || '/';
+const baseUrl = process.env.BASE_URL || '/';
 const receptorMap = new Map<string, Socket>();
 
 export default (app: KoaAppliaction & { server?: Server }) => {
   const server = createServer(app.callback());
-  const io = SokcetIO(server, { path });
+  const io = SokcetIO(server, {
+    path: `${baseUrl}/socket.io`
+  });
 
   if (!app.server) {
     app.server = server;

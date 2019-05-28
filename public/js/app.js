@@ -139,7 +139,7 @@ export default class App {
     this.users = await this.fetchUsers();
     if (this.users && this.users.length) {
       const initRes = new Array(this.users.length).fill(0);
-      this.users.sort((a, b) => a.index < b.index);
+      this.users.sort((a, b) => a.index - b.index);
       this.result.html(this.renderTable(initRes));
     } else {
       this.result.html(`
@@ -168,7 +168,7 @@ export default class App {
     }
     const maxIndex = similars.indexOf(Math.max(...similars));
     this.result.html(trs);
-    if (maxIndex > -1 && similars[maxIndex] > 0) {
+    if (maxIndex > -1 && similars[maxIndex] > 0.5) {
       this.result
         .children('tr')
         .eq(maxIndex)

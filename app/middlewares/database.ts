@@ -1,11 +1,10 @@
-import { readdirSync, writeFileSync } from 'fs';
+import { readdirSync } from 'fs';
 import { resolve } from 'path';
-import { Image } from 'seeta';
 import mongoose from 'mongoose';
 import createDebugger from 'debug';
 
-import { detector, pointer, recognizer } from '../../app';
 import { IUser } from '../database/schemas/user';
+import { register } from '../utils/face';
 
 const debug = createDebugger('antigen:db');
 
@@ -58,11 +57,7 @@ export default () => {
     if (users && users.length) {
       for (const user of users) {
         const { image: base64 } = user;
-        const timestamp = Date.now();
-        const filepath = `/tmp/${timestamp}`;
-        writeFileSync(filepath, Buffer.from(base64, 'base64'));
-        const image = new Image(filepath);
-        user.index = recognizer.register(image, detector, pointer);
+        user.index = register(base64);
         await user.save();
       }
     }

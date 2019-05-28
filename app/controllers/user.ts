@@ -38,9 +38,22 @@ export default class UserController {
   @get('/user/:name/token')
   public async handleGetUserToken(ctx: Context) {
     const { name } = ctx.params;
+    const { image: base64 } = ctx.request.body;
     const user = await findUserByName(name);
     if (user) {
-      ctx.body = user.token;
+      const similar = compare(base64, user.image);
+      if (similar > 0.7) {
+        ctx.body = {
+          success: true,
+          token: user.token,
+          message: 'ok'
+        };
+      } else {
+        ctx.body = {
+          success: false,
+          message: 'unauthorized user'
+        };
+      }
     } else {
       ctx.body = {
         success: false,
@@ -57,7 +70,19 @@ export default class UserController {
     if (user) {
       const { image: signup } = user;
       const similar = compare(base64, signup);
-      ctx.body = similar > 0.7;
+      // ctx.body = similar > 0.7;
+      if (similar > 0.7) {
+        ctx.body = {
+          success: true,
+          token: user.token,
+          message: 'ok'
+        };
+      } else {
+        ctx.body = {
+          success: false,
+          message: 'unauthorzied user'
+        };
+      }
       user.last = base64;
       await user.save();
     } else {
