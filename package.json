@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon -e ts -x 'ts-node app' -w app.ts -w app",
     "start": "cross-env NODE_ENV=production ts-node app",
-    "build": "parcel build public/index.html --out-dir public/dist"
+    "build": "parcel build public/index.html --out-dir public/dist",
+    "build:paper": "echo \"TODO\""
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "consola": "^2.6.0",
     "jquery": "^3.4.1",
@@ -28,6 +29,8 @@
     "@babel/core": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
     "@types/debug": "^4.1.4",
     "@types/glob": "^7.1.1",
     "@types/koa": "^2.0.48",
@@ -51,6 +54,7 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^2.3.0",
     "nodemon": "^1.18.11",
     "parcel-bundler": "^1.12.3",
     "popper.js": "^1.15.0",
@@ -61,5 +65,17 @@
     "stylus-loader": "^3.0.2",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "packages/**/*.ts": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
   }
 }

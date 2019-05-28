@@ -49,7 +49,7 @@ $ sudo apt-get install -fy libopenblas-dev libprotobuf-dev libssl-dev libgnutls2
 $ sudo apt-get install -fy python-dev python-numpy libjpeg-dev libpng-dev libtiff-dev libjasper-dev
 ```
 
-Then you can use the installation script [`install-opencv.sh`](scritps/install-opencv.sh) to install an optimized version, or compile a full-function opencv following this commands:
+Then you can use the installation script [`install-opencv.sh`](scripts/install-opencv.sh) to install an optimized version, or compile a full-function opencv following this commands:
 
 ```sh
 $ mkdir build && cd build
@@ -58,6 +58,10 @@ $ make -j<jobs> && sudo make install
 ```
 
 > Jobs usually equals you machine's cpu cores amount times 1.5
+
+### Download SeetaFaceEngine models
+
+Downloads models from [here](https://drive.google.com/open?id=1qViCjBksqe6fvSHKBJpUoNpTyO8HAA2j) or [Baidu Disk](https://pan.baidu.com/s/1HJj8PEnv3SOu6ZxVpAHPXg) for mainland users.
 
 ### Start dev server
 
@@ -83,7 +87,11 @@ Then you can start the server:
 $ yarn start
 ```
 
-### Common options
+## API reference
+
+See [docs/API-reference.md](docs/API-reference.md) for more details.
+
+## Common options
 
 This project also accepts some common options by passing environment variables:
 
@@ -95,7 +103,7 @@ This project also accepts some common options by passing environment variables:
 - **DB_USER** `String` - MongoDB user name. Default is _''_.
 - **DB_PSK** `String` - MongoDB user password. Default is _''_.
 
-### Docker setup
+## Docker setup
 
 This project also provides a `docker-compose.yml` for docker setup. Install [docker-compose](https://docs.docker.com/compose/) and execute:
 
