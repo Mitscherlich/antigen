@@ -8,7 +8,7 @@ const r = (path: string) => resolve(__dirname, path);
 export default (app: KoaApplication) => {
   const apiPath = r('../controllers');
   const router = new Route(app, apiPath, {
-    prefix: process.env.BASE_URL || '/'
+    prefix: process.env.BASE_URL
   });
   router.init();
 };

@@ -5,6 +5,7 @@ import R from 'ramda';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
+import mount from 'koa-mount';
 import serve from 'koa-static';
 import consola from 'consola';
 
@@ -25,6 +26,7 @@ const useMiddleware = (app: Koa) =>
     )
   );
 
+const baseUrl = process.env.BASE_URL || '/';
 const port = parseInt(process.env.PORT || '3000');
 const host = process.env.HOST || '127.0.0.1';
 const isDev = !(process.env.NODE_ENV === 'production');
@@ -33,10 +35,7 @@ export const detector = new FaceDetector(r('./models/SeetaFaceDetector2.0.ats'))
 export const pointer = new PointDetector(r('./models/SeetaPointDetector2.0.pts5.ats'));
 export const recognizer = new FaceRecognizer(r('./models/SeetaFaceRecognizer2.0.ats'));
 
-// app.context.detector = detector;
-// app.context.pointer = pointer;
-// app.context.recognizer = recognizer;
-
+app.use(mount(baseUrl, serve('./public/dist')));
 app.use(
   bodyParser({
     formLimit: '10mb',
@@ -44,7 +43,6 @@ app.use(
     textLimit: '10mb'
   })
 );
-app.use(serve('./public/dist'));
 
 if (isDev) {
   app.use(logger());

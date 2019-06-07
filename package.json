@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon -e ts -x 'ts-node app' -w app.ts -w app",
     "start": "cross-env NODE_ENV=production ts-node app",
-    "build": "parcel build public/index.html --out-dir public/dist",
+    "serve": "parcel public/index.html --out-dir public/dist",
+    "generate": "parcel build public/index.html --out-dir public/dist",
     "build:paper": "echo \"TODO\""
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-logger": "^3.2.0",
+    "koa-mount": "^4.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "mongoose": "^5.5.1",
@@ -36,6 +38,7 @@
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.2",
     "@types/koa-logger": "^3.1.1",
+    "@types/koa-mount": "^3.0.1",
     "@types/koa-router": "^7.0.40",
     "@types/koa-static": "^4.0.1",
     "@types/mongoose": "^5.3.26",
@@ -55,6 +58,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.3.0",
+    "lint-staged": "^8.2.0",
     "nodemon": "^1.18.11",
     "parcel-bundler": "^1.12.3",
     "popper.js": "^1.15.0",

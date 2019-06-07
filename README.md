@@ -1,3 +1,10 @@
+<div align=right>
+<!-- make browser happy :) -->
+
+:us: [:cn:](README.zh-CN.md)
+
+</div>
+
 # Antigen
 
 This is my bachelor graduation design project, a face recognition service based on [SeetaFaceEngine](https://github.com/seetaface/SeetaFaceEngine). I also provided the public RESTful API. [Check this out!](https://api.mitscherlich.me/antigen)

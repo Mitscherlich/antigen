@@ -1,6 +1,6 @@
 # API Reference
 
-The default entpoint if you run this locally is `http://localhost:3000`. For my demo, is `https://api.mitscherlich.me/antigen`.
+The default endpoint if you run this locally is `http://localhost:3000`. For my demo, is `https://api.mitscherlich.me/antigen`.
 
 ## Users
 
