@@ -20,7 +20,7 @@
     "koa-mount": "^4.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "mongoose": "^5.6.11",
+    "mongoose": "^5.7.5",
     "qrcode": "^1.4.1",
     "ramda": "^0.26.1",
     "seeta": "^0.2.4",
