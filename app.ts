@@ -9,6 +9,13 @@ import mount from 'koa-mount';
 import serve from 'koa-static';
 import consola from 'consola';
 
+declare module 'koa' {
+  interface Request {
+    body?: any;
+    rawBody: string;
+  }
+}
+
 const r = (path: string) => resolve(__dirname, path);
 const MIDDLEWARE = ['database', 'router', 'ws'];
 const bundler = new Bundler(r('./public/index.html'), {
