@@ -1,0 +1,36 @@
+# -- DEV DOCKER-COMPOSE --
+# -- DO NOT USE IN PRODUCTION! --
+
+version: "3"
+services:
+  db:
+    container_name: antigen-db
+    image: mongo
+    restart: always
+    logging:
+      driver: "none"
+    volumes:
+      - db-data:/data/db
+    ports:
+      - "27017:27017"
+
+  app:
+    container_name: antigen-app
+    build:
+      context: ../..
+      dockerfile: dev/containers/Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      - HOST=0.0.0.0
+      - DEBUG=antigen:*
+      - DB_URL=db
+    volumes:
+      - ../..:/antigen
+      - /antigen/node_modules
+      - /antigen/.git
+
+volumes:
+  db-data:

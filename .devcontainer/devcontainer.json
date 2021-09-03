@@ -1,0 +1,18 @@
+{
+  "name": "antigen",
+  "dockerComposeFile": [
+    "../dev/containers/docker-compose.yml"
+  ],
+  "forwardPorts": [3000],
+  "service": "app",
+  "workspaceFolder": "/antigen",
+  "extensions": [
+    "aaron-bond.better-comments",
+    "EditorConfig.editorconfig",
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+  ],
+  "postCreateCommand": ["yarn", "install", "--pure-lockfile"]
+}
