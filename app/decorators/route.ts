@@ -4,7 +4,7 @@ import KoaApplication, { Middleware } from 'koa';
 import glob from 'glob';
 
 const symbolPrefix = Symbol('prefix');
-const routersMap = new Map<IControllerConfig & { target: Constructor<Controller> }, Middlewares>();
+const routersMap = new Map<ControllerOptions & { target: Constructor<Controller> }, Middlewares>();
 
 const toArray = <T>(v: T) => (Array.isArray(v) ? v : [v]);
 
@@ -23,7 +23,7 @@ export type Constructor<T> = (new (...args: any[]) => T) & (T & { [key: string]:
 
 export type Middlewares = Middleware | Middleware[];
 
-export interface IControllerConfig {
+export interface ControllerOptions {
   method: string;
   path: string;
 }
@@ -59,10 +59,9 @@ export default class Route {
   }
 }
 
-export const router = (conf: IControllerConfig) => (
+export const router = (conf: ControllerOptions) => (
   target: Constructor<Controller>,
-  key: string,
-  _: PropertyDescriptor
+  key: string
 ) => {
   conf.path = normalizePath(conf.path);
 
