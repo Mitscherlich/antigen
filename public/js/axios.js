@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosJson = axios.create({
-  baseURL: window.location.href,
+  baseURL: process.env.API_URL || window.location.href,
   headers: {
     Accepts: 'appliaction/json'
   }
