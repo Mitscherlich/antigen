@@ -1,8 +1,10 @@
-FROM ubuntu:xenial
+FROM  ubuntu:xenial
+LABEL author="Mitscherlich <mitscherlich36@gmail.com>"
+ARG   WITH_API_ONLY
 
 # copy work essentials
-COPY . /opt/antigen
-WORKDIR /opt/antigen
+COPY  . /antigen
+WORKDIR /antigen
 
 # change apt mirror and install build-essentials
 RUN apt-get update && apt-get install -fy --no-install-recommends git curl cmake build-essential dpkg-dev ca-certificates && \
@@ -20,7 +22,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 RUN ./scripts/install-protobuf.sh && ./scripts/install-opencv.sh
 
 # install dependencies and generate static html
-RUN yarn install --pure-lockfile && yarn build
+RUN [[ -z "$WITH_API_ONLY" ]] ; then yarn install --pure-lockfile && yarn generate ; else echo "Skip bundle assets..." ; fi
 
 EXPOSE 3000
 
