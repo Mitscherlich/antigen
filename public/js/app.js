@@ -4,7 +4,7 @@ import { axiosJson } from './axios';
 const draw = (ctx, data) => {
   for (let i = 0; i < 140; i++) {
     for (let j = 0; j < 140; j++) {
-      let n = 4 * (i * 140 + j);
+      const n = 4 * (i * 140 + j);
       ctx.fillStyle = 'rgb(' + [data[n + 0], data[n + 1], data[n + 2]].join(',') + ')';
       ctx.fillRect(j * 1, i * 1, 1, 1);
     }
