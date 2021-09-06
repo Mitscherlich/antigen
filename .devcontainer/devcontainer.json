@@ -8,11 +8,12 @@
   "workspaceFolder": "/antigen",
   "extensions": [
     "aaron-bond.better-comments",
-    "EditorConfig.editorconfig",
-    "mikestead.dotenv",
-    "dbaeumer.vscode-eslint",
     "christian-kohler.path-intellisense",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "sysoev.language-stylus",
   ],
   "postCreateCommand": ["yarn", "install", "--pure-lockfile"]
 }
