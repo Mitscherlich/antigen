@@ -1,4 +1,4 @@
 import mongoose from 'mongoose';
-import UserSchema, { IUser } from '../schemas/user';
+import UserSchema, { User } from '../schemas/user';
 
-export default mongoose.model<IUser>('User', UserSchema);
+export default mongoose.model<User>('User', UserSchema);

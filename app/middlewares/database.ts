@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import mongoose from 'mongoose';
 import createDebugger from 'debug';
 
-import { IUser } from '../database/schemas/user';
+import { User as UserScehma } from '../database/schemas/user';
 import { register } from '../utils/face';
 
 const debug = createDebugger('antigen:db');
@@ -51,7 +51,7 @@ export default () => {
   mongoose.connection.once('open', async () => {
     debug(`connected to mongodb://${dburl}:${dbport}`);
 
-    const User = mongoose.model<IUser>('User');
+    const User = mongoose.model<UserScehma>('User');
 
     const users = await User.find({}).exec();
     if (users && users.length) {

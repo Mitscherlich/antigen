@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Schema, Document } from 'mongoose';
 
-export interface IUser extends Document {
+export interface User extends Document {
   token: string;
   index: number;
   name: string;
@@ -13,7 +13,7 @@ export interface IUser extends Document {
   };
 }
 
-const UserScehma = new Schema<IUser>({
+const UserScehma = new Schema<User>({
   token: { type: String, default: uuidv4() },
   index: { type: Number, required: true },
   name: { type: String, required: true },
@@ -25,7 +25,7 @@ const UserScehma = new Schema<IUser>({
   }
 });
 
-UserScehma.pre<IUser>('save', function(next: Function) {
+UserScehma.pre<User>('save', function(next: Function) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updatedAt = new Date();
   } else {
@@ -35,7 +35,7 @@ UserScehma.pre<IUser>('save', function(next: Function) {
   next();
 });
 
-UserScehma.pre<IUser>('save', function(next: Function) {
+UserScehma.pre<User>('save', function(next: Function) {
   const user = this;
 
   if (!user.isModified('image')) {
