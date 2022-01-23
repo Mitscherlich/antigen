@@ -24,7 +24,7 @@
     "qrcode": "^1.4.1",
     "ramda": "^0.26.1",
     "seeta": "^0.2.4",
-    "socket.io": "^2.4.0",
+    "socket.io": "2.4.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
